@@ -6,8 +6,7 @@ namespace ConsoleApp4._2
     {
         static void Main(string[] args)
         {
-            bool isHeroAlive = true;
-            //int health;
+            bool isHeroAlive = true;            
             double maxHealth = 10;
 
             while (isHeroAlive)
