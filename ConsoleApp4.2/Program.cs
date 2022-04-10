@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ConsoleApp4._2
 {
@@ -6,16 +6,33 @@ namespace ConsoleApp4._2
     {
         static void Main(string[] args)
         {
-            bool isHeroAlive = true;            
+            bool isHeroAlive = true;
+            
             double maxHealth = 10;
+            double maxMana = 10;
+
+            int healthBarYPosition = 3;
+            int manaBarYPosition = 6;
+            int decreasingOfBarSize = 10;
+            int percentage = 100;          
 
             while (isHeroAlive)
             {
                 Console.WriteLine("Введите процент здоровья");
 
-                double health = Convert.ToDouble(Console.ReadLine())/10;
+                double health = Convert.ToDouble(Console.ReadLine())/ decreasingOfBarSize;
 
-                DrawHealthBar(health, maxHealth, 3, '#', '_');
+                Console.WriteLine("Введите процент маны");
+
+                double mana = Convert.ToDouble(Console.ReadLine()) / decreasingOfBarSize;
+
+                Console.SetCursorPosition(0, healthBarYPosition);
+
+                DrawBar(health, maxHealth, '#', '_', percentage, "здоровья");
+
+                Console.SetCursorPosition(0, manaBarYPosition);
+
+                DrawBar(mana, maxMana, '#', '_', percentage, "маны");
 
                 if (health <= 0)
                 {
@@ -28,26 +45,25 @@ namespace ConsoleApp4._2
                 Console.Clear();
             }            
         }
-        static void DrawHealthBar(double health, double maxHealth, int Yposition, char symbolOfHealth, char symbolOfEmptyHealth)
-        { 
-            Console.SetCursorPosition(0, Yposition);
-
+        static void DrawBar(double value, double maxValue, char symbolOfValue, char symbolOfEmptyValue, int percentage , string text)
+        {
             Console.Write("[");
 
-            for (int i = 0; i < health; i++)
+            for (int i = 0; i < value; i++)
             {
-                Console.Write(symbolOfHealth);
+                Console.Write(symbolOfValue);
             }
 
-            for (double i = health; i < maxHealth; i++)
+            for (double i = value; i < maxValue; i++)
             {
-                Console.Write(symbolOfEmptyHealth);
+                Console.Write(symbolOfEmptyValue);
             }
             Console.WriteLine("]");
 
-            double percentOfHealth = health * 100 / maxHealth;
+            double percentOfHealth = value * percentage / maxValue;
 
-            Console.WriteLine($"У героя {percentOfHealth} % здоровья");
+            Console.WriteLine($"У героя {percentOfHealth} % {text}");
         }        
     }
 }
+
