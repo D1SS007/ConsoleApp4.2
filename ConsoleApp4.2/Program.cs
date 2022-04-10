@@ -27,9 +27,9 @@ namespace ConsoleApp4._2
                 double mana = Convert.ToDouble(Console.ReadLine()) / decreasingOfBarSize;
 
                 Console.SetCursorPosition(0, healthBarYPosition);
-
+                
                 DrawBar(health, maxHealth, '#', '_', percentage, "здоровья");
-
+                
                 Console.SetCursorPosition(0, manaBarYPosition);
 
                 DrawBar(mana, maxMana, '#', '_', percentage, "маны");
